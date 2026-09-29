@@ -1,0 +1,50 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/user/El/blind_maintenance
+collecting ... collected 41 items
+
+tests/test_implementation.py::test_service_admissibility[2.75-5-True] PASSED [  2%]
+tests/test_implementation.py::test_service_admissibility[2.7499999999999996-5-False] PASSED [  4%]
+tests/test_implementation.py::test_service_admissibility[2.7-5-False] PASSED [  7%]
+tests/test_implementation.py::test_service_admissibility[2.75-4-False] PASSED [  9%]
+tests/test_implementation.py::test_service_admissibility[10.0-4-False] PASSED [ 12%]
+tests/test_implementation.py::test_service_admissibility[10.0-5-True] PASSED [ 14%]
+tests/test_implementation.py::test_service_physics PASSED                [ 17%]
+tests/test_implementation.py::test_work_uses_pre_action_capacity_and_updated_D_for_damage PASSED [ 19%]
+tests/test_implementation.py::test_reserve_cap PASSED                    [ 21%]
+tests/test_implementation.py::test_no_gain_after_death_and_metrics_frozen PASSED [ 24%]
+tests/test_implementation.py::test_death_by_reserve PASSED               [ 26%]
+tests/test_implementation.py::test_death_on_last_step_is_distinguishable PASSED [ 29%]
+tests/test_implementation.py::test_after_death_world_refuses_steps PASSED [ 31%]
+tests/test_implementation.py::test_fixed_first_service_step1_then_p_work[5] PASSED [ 34%]
+tests/test_implementation.py::test_fixed_first_service_step1_then_p_work[6] PASSED [ 36%]
+tests/test_implementation.py::test_fixed_first_service_step1_then_p_work[7] PASSED [ 39%]
+tests/test_implementation.py::test_fixed_first_service_step1_then_p_work[8] PASSED [ 41%]
+tests/test_implementation.py::test_fixed_first_service_step1_then_p_work[9] PASSED [ 43%]
+tests/test_implementation.py::test_fixed_first_service_step1_then_p_work[10] PASSED [ 46%]
+tests/test_implementation.py::test_fixed_first_service_step1_then_p_work[12] PASSED [ 48%]
+tests/test_implementation.py::test_fixed_first_service_step1_then_p_work[15] PASSED [ 51%]
+tests/test_implementation.py::test_C_derivative_zero_after_service_and_first_step PASSED [ 53%]
+tests/test_implementation.py::test_C_level_zeroes_derivative PASSED      [ 56%]
+tests/test_implementation.py::test_C_decision_rules PASSED               [ 58%]
+tests/test_implementation.py::test_C_queue_exact_t_minus_4_accepted PASSED [ 60%]
+tests/test_implementation.py::test_C_queue_example_crossing_service_is_discarded PASSED [ 63%]
+tests/test_implementation.py::test_C_queue_stale_entry_is_discarded_not_caught_up PASSED [ 65%]
+tests/test_implementation.py::test_C_training_update_formula PASSED      [ 68%]
+tests/test_implementation.py::test_C_scrambled_uses_permuted_vector_and_its_difference PASSED [ 70%]
+tests/test_implementation.py::test_output_trend_delta PASSED             [ 73%]
+tests/test_implementation.py::test_static_multiplier_constant PASSED     [ 75%]
+tests/test_implementation.py::test_dynamic_minimum_dwell_and_switches_to_other_regime PASSED [ 78%]
+tests/test_implementation.py::test_centered_channels_sum_to_zero_and_mapping PASSED [ 80%]
+tests/test_implementation.py::test_sensor_formula_by_hand PASSED         [ 82%]
+tests/test_implementation.py::test_tape_deterministic_and_seed_dependent PASSED [ 85%]
+tests/test_implementation.py::test_strategy_order_does_not_change_tape_or_results PASSED [ 87%]
+tests/test_implementation.py::test_observation_contains_only_permitted_fields PASSED [ 90%]
+tests/test_implementation.py::test_x_only_given_to_policies_that_declare_it PASSED [ 92%]
+tests/test_implementation.py::test_policies_hold_no_reference_to_world_or_tape PASSED [ 95%]
+tests/test_implementation.py::test_privileged_values_only_for_declared_exceptions PASSED [ 97%]
+tests/test_implementation.py::test_world_guards_privileged_access_timing PASSED [100%]
+
+- generated xml file: /home/user/El/blind_maintenance/results/tests/junit.xml --
+============================== 41 passed in 2.78s ==============================

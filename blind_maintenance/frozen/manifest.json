@@ -1,0 +1,135 @@
+{
+  "created_utc": "2026-09-29T18:15:17.100366+00:00",
+  "protocol": "protocol/Blind_Maintenance_Benchmark_RU_v1.md (package A, v1.0)",
+  "environment": {
+    "python": "3.11.15 (main, Mar  3 2026, 09:26:23) [GCC 13.3.0]",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.18.44-fc-v37-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "cpu_count": 4,
+    "cpu_model": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "mem_total": "16481980 kB"
+  },
+  "rng": {
+    "algorithm": "numpy.random.Generator(PCG64)",
+    "world_streams": "SeedSequence(world_seed).spawn(6) in order availability, wear, sensor_noise, other_noise, channel_map, permutations",
+    "bootstrap": "SeedSequence([20260929, mode_code]) with mode_code dynamic=1, static=2; one index matrix per mode shared by all comparisons",
+    "confirmatory_seed_derivation": "rng = numpy.random.Generator(PCG64(SeedSequence(master_seed))); dynamic list: draw rng.integers(0, 2**63 - 1) repeatedly, skipping values already used (development seeds of both modes, or earlier draws), until 512 values; static list: continue with the same generator until 256 further values."
+  },
+  "development_seeds": {
+    "dynamic": {
+      "base": 31000000,
+      "stride": 7919,
+      "n": 64
+    },
+    "static": {
+      "base": 32000000,
+      "stride": 7919,
+      "n": 64
+    }
+  },
+  "confirmatory_sizes": {
+    "dynamic": 512,
+    "static": 256
+  },
+  "selected_settings": {
+    "dynamic": {
+      "fixed_star": {
+        "p": 5,
+        "dev_mean_G": 924.4893890530401
+      },
+      "tuned_output": {
+        "theta": 0.995,
+        "dev_mean_G": 838.1604228273463
+      },
+      "output_trend": {
+        "L": 8,
+        "theta": 0.995,
+        "dev_mean_G": 906.4133016440103
+      }
+    },
+    "static": {
+      "fixed_star": {
+        "p": 10,
+        "dev_mean_G": 1017.7375818058683
+      },
+      "tuned_output": {
+        "theta": 0.995,
+        "dev_mean_G": 1001.5217597950693
+      },
+      "output_trend": {
+        "L": 8,
+        "theta": 0.94,
+        "dev_mean_G": 1002.9753311201913
+      }
+    }
+  },
+  "optional_own_agent": "not used (no exploratory agent)",
+  "metrics": [
+    "G",
+    "survived",
+    "died",
+    "death_step",
+    "steps_alive",
+    "final_S",
+    "final_R",
+    "final_D",
+    "n_work",
+    "n_service",
+    "B",
+    "n_denied_service_requests",
+    "alive_steps_r0",
+    "alive_steps_r1",
+    "alive_steps_r2",
+    "services_r0",
+    "services_r1",
+    "services_r2",
+    "n_train_C"
+  ],
+  "analysis_plan": {
+    "primary": "mean(G_C - G_fixed*) in dynamic confirmatory worlds, paired percentile bootstrap 95% CI, 10000 resamples of worlds",
+    "companion": [
+      "survival difference (p.p.)",
+      "final S difference",
+      "SERVICE count difference"
+    ],
+    "secondary_exploratory_unadjusted": [
+      "C vs C_scrambled, C_level, output_only, tuned_output, output_trend, oracle_D, all fixed (both modes; static uses its own fixed*)",
+      "dynamic - static contrast of paired effects",
+      "service pace per hidden regime (fast - slow), subsample size reported"
+    ],
+    "no_pass_fail": true
+  },
+  "enforced_files_sha256": {
+    "bm/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bm/experiment.py": "0e91de0155a91702764132c4704253a763654aa93afe1f08d36719fdadb3164f",
+    "bm/params.py": "f363370a0e925bb38f21f409f06900b73b0015c2b9ddd9a6dfd37f43f06009ba",
+    "bm/policies.py": "76bb5f80340578364c36fd810b980f1bd0f0224b135cf6a0018cf5c39f337bce",
+    "bm/runner.py": "130147851ee0cb6f9a514d7df2baab7e9b17575292bd5cd9fcbf4a4c22dbc929",
+    "bm/seeds.py": "610f3c2240cbd92c20cc6437d772a93e07b44015fcd24ba55ae6d11594cff8e5",
+    "bm/stats.py": "3a8692985a3dc545e307d1840f49b4a39440ee14accd6927d48cb62e61b44f1c",
+    "bm/tape.py": "696ea7eb616a02c47de78cb1743107becce026e5e16eb8e4fafbb1b35750d72b",
+    "bm/world.py": "5f04b8645b5e4d25fce71675310af4ba14f07b2313fb8ffdd63cb8db0aad1ce4",
+    "scripts/analyze.py": "72cd0a816b638d560e6b0806399966d6618aa69ae41d8178bd34f7f3fd086061",
+    "scripts/draw_confirmatory_seeds.py": "0c410654ede1c81117c006002d34b3200b0daf7ab73236b76d5bc5ef4df89da4",
+    "scripts/freeze.py": "222fd6b32441f492bacac8b384b8d73319f35d269717c1193f53d1bbaa336329",
+    "scripts/run_confirmatory.py": "87ea87b3da1e6c83fedeb3a0ebef2046a2bdeec394c021ba32929015f64d018b",
+    "scripts/run_development.py": "f767f5456e41beed2dbbd1caab3c66a5e37a22debc2cb11d824b375befe4496d",
+    "scripts/smoke_test.py": "fe62f0c50627e22f336d224a397fd279f8c628c028100ce21d9f20d888838575",
+    "tests/test_implementation.py": "d61ac4304ae93f6e9e07c87fe4d133b89d793521fc646273b377c293c85f2263",
+    "requirements.txt": "6552e7555d97a27d698101bcb4dc10ec8efd35304454648a595d1d84a79ed3ca",
+    "protocol/Blind_Maintenance_Benchmark_RU_v1.md": "05dccd8e03e818a7ea51a1fbb9e45501f9a31b173b5f7a91105ca5c392548096",
+    "protocol/IMPLEMENTATION_NOTES.md": "a60a1c1428e0f7d167e752083d7c2768cb1941fe2248beecc581d38bac658a3d",
+    "frozen/settings.json": "99eee7206a55010106ac7b32ac8de9a91e10baa0e14dad8043975162aa90f513"
+  },
+  "recorded_files_sha256": {
+    "README.md": "34e7f1a5a506e6293d8e49b5f8639f04c864885a15d48e67202119ace4b53af0",
+    "results/development/development.csv": "b44798ca2587fb757c1831ebc3eb6b1150b792af31816028c68886d1ecff9165",
+    "results/development/run_info.json": "554f02fda3261a29a43e82a5bf4c051eadd6db744840d276c10977d927a3f043",
+    "results/development/summary.json": "79ce8ff4489118c4e56d31db4912a63099e5a6e32dd795f1a6a5f1604dff8a21",
+    "results/development/summary_tables.md": "5882b390fee93bf453c0350d609bdd7041ce7fb88e630f9c6bc19438ce9da799",
+    "results/tests/junit.xml": "7d99285128f2a781f6a5c1d619bc1a7db36907089e5d331e7880a3616ec5d1c6",
+    "results/tests/pytest_output.txt": "867c1d7d0425573e0ac4ce79beabf20d51ca274e0fff267236c92b2257777265",
+    "results/tests/smoke_test_output.txt": "3f7ccc68f7ecbfc3b7b1ce31bf28206a54f097b18b41cf3ca028bff3084bcc61"
+  }
+}
