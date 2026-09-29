@@ -10,6 +10,20 @@
 python3 -m pip install -r requirements.txt     # numpy, pytest; Python 3.11
 ```
 
+## Быстрый запуск на Windows
+
+Установите Python 3.11 или новее с https://www.python.org/downloads/ (отметьте
+«Add python to PATH»), распакуйте архив и дважды щёлкните `run_windows.bat`.
+Батник ставит numpy и pytest, прогоняет тесты §8 и smoke-test. Затем он заново
+пересчитывает все 768 итоговых миров и сверяет каждое число с `confirmatory.csv`.
+Существующие файлы при этом не перезаписываются. В конце должно появиться
+`RESULT: OK`. На Mac/Linux то же делают команды:
+
+```bash
+python3 -m pip install -r requirements.txt
+python3 -m pytest -q tests && python3 scripts/smoke_test.py && python3 scripts/reproduce_check.py
+```
+
 ## Команды
 
 | шаг | команда | что делает |
@@ -22,6 +36,7 @@ python3 -m pip install -r requirements.txt     # numpy, pytest; Python 3.11
 | seeds | `python3 scripts/draw_confirmatory_seeds.py [--master-seed N]` | master seed строго после заморозки; 512 dynamic + 256 static миров |
 | итоговый запуск | `python3 scripts/run_confirmatory.py` | сверяет хеши, запускает прогон один раз, пишет пошаговые логи |
 | анализ | `python3 scripts/analyze.py --phase confirmatory` | `summary.json`, `summary_tables.md` |
+| проверка воспроизводимости | `python3 scripts/reproduce_check.py [--quick]` | пересчитывает итоговые миры в памяти и сверяет с опубликованным CSV |
 | post-hoc | `python3 scripts/posthoc_descriptive.py` | описательный разбор после итогового прогона, вне замороженного плана |
 
 Полный запуск с нуля занимает около 2 минут на 4 ядрах:
